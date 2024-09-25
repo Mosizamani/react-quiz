@@ -1,41 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import quizData from './quizData'; // Make sure the path matches your folder structure
 
-function App() {
-  const [count, setCount] = useState(0)
-
-
-
-  const questions = [
-    {
-      question: 'What is the capital of Iran?',
-      options: ['Baqdad', 'Tehran', 'Calgary', 'Rome'],
-      answer: 'Tehran'
-    },
-    {
-      question: 'What is the capital of Spain?',
-      options: ['Paris', 'Berlin', 'Madrid', 'Rome'],
-      answer: 'Madrid'
-    },
-    {
-      question: 'What is the capital of Germany?',
-      options: ['Paris', 'Berlin', 'Madrid', 'Rome'],
-      answer: 'Berlin'
-    },
-    {
-      question: 'What is the capital of Italy?',
-      options: ['Paris', 'Berlin', 'Madrid', 'Rome'],
-      answer: 'Rome'
-    }
-  ]
-
+const Quiz = () => {
   return (
-    <>
-      <h1>Welcome to my </h1>
-    </>
-  )
-}
+    <div>
+      {quizData.map((item, index) => (
+        <div key={index}>
+          <h3>{item.question}</h3>
+          <ul>
+            {item.answers.map((answer, i) => (
+              <li key={i}>{answer.answer} - {answer.points} points</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default App
+export default Quiz;
