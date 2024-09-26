@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import quizData from './quizData'; // Ensure the path is correct
+import './styles.css'; // Import the CSS file with styles for the quiz
+import styles from './Quiz.module.css'; // Import the CSS module with styles for the quiz
 
 const Quiz = () => {
+
+  const styling = {}
+
   const [currentQuestion, setCurrentQuestion] = useState(0); // Track the current question index
   const [userAnswers, setUserAnswers] = useState(Array(quizData.length).fill(null)); // Store user answers
   const [isSubmitted, setIsSubmitted] = useState(false); // Track if the quiz is submitted
@@ -32,8 +37,8 @@ const Quiz = () => {
     <div>
       {!isSubmitted ? (
         <>
-          <div key={currentQuestion}>
-            <h3>{quizData[currentQuestion].question}</h3>
+          <div className="quiz" key={currentQuestion}>
+            <h3 className="question">{quizData[currentQuestion].question}</h3>
             <ul>
               {quizData[currentQuestion].answers.map((answer, answerIndex) => (
                 <li key={answerIndex}>
@@ -53,14 +58,14 @@ const Quiz = () => {
           </div>
 
           {selectedAnswer !== null && (
-            <button onClick={handleNextQuestion}>
+            <button className={styles.button} onClick={handleNextQuestion}>
               {currentQuestion === quizData.length - 1 ? "Submit Quiz" : "Next Question"}
             </button>
           )}
         </>
       ) : (
         <div>
-          <h2>Quiz Completed!</h2>
+          <h2 className="">Quiz Completed!</h2>
           <h3>Total Points: {totalPoints} out of {totalPossiblePoints} points.</h3>
         </div>
       )}
