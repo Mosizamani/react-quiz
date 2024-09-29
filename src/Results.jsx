@@ -24,18 +24,20 @@ function Results({ score, handleReset }) {
     ]
 
     const calculateLevel = () => {
-
-        return levels(Math.floor(score / 5))
+        return levels
+        .slice()
+        .reverse()
+        .find(level => score >= level.minPoints);
     }
 
     const level = calculateLevel()
     return (
         <>
             <p>Congrats!</p>
-            <h2>You are certified {levels.name}!</h2>
-            <p>{levels.description}</p>
+            <h2>You are certified {level.name}!</h2>
+            <p>{level.description}</p>
             <p>No matter your level, ...</p>
-            <button type="submit" onClick={handleReset}>Retake Quiz</button>
+            <button className="form-btn" type="submit" onClick={handleReset}>Retake Quiz</button>
         </>
     )
 }

@@ -1,4 +1,4 @@
-
+import React, {useState, useRef} from 'react'
 
 function Form({question, onSubmit}) {
     const [score, setScore] = useState(0)
@@ -12,11 +12,11 @@ function Form({question, onSubmit}) {
 
     return (
         <>
-            <p>Which one are you?</p>
-            <p>Take the quiz to figure out!</p>
+            <p style={{ color: 'blue' }}>Which one are you?</p>
+
 
             <form ref={formRef} onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column'}}>
-                <p>{question.questiontext}</p>
+                <p style={{ color: 'green' }}>{question.questionText}</p>
                 {question.answers.map((answer, index) => (
                     <label key={index}>
                         <input
@@ -28,9 +28,10 @@ function Form({question, onSubmit}) {
                         {answer.answer}
                     </label>
                 ))}
-                <button type="submit">Submit</button>
+                <button className="form-btn" type="submit">Submit</button>
             </form>
-        </>
+        </> 
     )
 }
  
+export default Form

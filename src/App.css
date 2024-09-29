@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.form-btn {
+  margin-top: 1em;
+  background-color: orange;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
