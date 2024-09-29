@@ -70,6 +70,7 @@ const App = () => {
 
   return (
     <>
+      <p>Part one!</p>
       <PinkTitle>Hello everyone</PinkTitle>
       <h1 style={blueStyle}>Welcome to my quiz</h1>
       <button onClick={() => setSomeStateValue(!someStateValue)}>Toggle Color</button>
